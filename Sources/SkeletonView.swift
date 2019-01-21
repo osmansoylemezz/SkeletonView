@@ -4,7 +4,7 @@ import UIKit
 
 public extension UIView {
     
-    func showSkeleton(usingColor color: UIColor = SkeletonAppearance.default.tintColor) {
+    @objc func showSkeleton(usingColor color: UIColor = SkeletonAppearance.default.tintColor) {
         showSkeleton(withType: .solid, usingColors: [color])
     }
     
