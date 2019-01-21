@@ -8,31 +8,31 @@ public extension UIView {
         showSkeleton(withType: .solid, usingColors: [color])
     }
     
-    func showGradientSkeleton(usingGradient gradient: SkeletonGradient = SkeletonAppearance.default.gradient) {
+    @objc func showGradientSkeleton(usingGradient gradient: SkeletonGradient = SkeletonAppearance.default.gradient) {
         showSkeleton(withType: .gradient, usingColors: gradient.colors)
     }
     
-    func showAnimatedSkeleton(usingColor color: UIColor = SkeletonAppearance.default.tintColor, animation: SkeletonLayerAnimation? = nil) {
+    @objc func showAnimatedSkeleton(usingColor color: UIColor = SkeletonAppearance.default.tintColor, animation: SkeletonLayerAnimation? = nil) {
         showSkeleton(withType: .solid, usingColors: [color], animated: true, animation: animation)
     }
     
-    func showAnimatedGradientSkeleton(usingGradient gradient: SkeletonGradient = SkeletonAppearance.default.gradient, animation: SkeletonLayerAnimation? = nil) {
+    @objc func showAnimatedGradientSkeleton(usingGradient gradient: SkeletonGradient = SkeletonAppearance.default.gradient, animation: SkeletonLayerAnimation? = nil) {
         showSkeleton(withType: .gradient, usingColors: gradient.colors, animated: true, animation: animation)
     }
     
-    func hideSkeleton(reloadDataAfter reload: Bool = true) {
+    @objc func hideSkeleton(reloadDataAfter reload: Bool = true) {
         flowDelegate?.willBeginHidingSkeletons(withRootView: self)
         recursiveHideSkeleton(reloadDataAfter: reload, root: self)
     }
     
-    func startSkeletonAnimation(_ anim: SkeletonLayerAnimation? = nil) {
+    @objc func startSkeletonAnimation(_ anim: SkeletonLayerAnimation? = nil) {
         skeletonIsAnimated = true
         subviewsSkeletonables.recursiveSearch(leafBlock: startSkeletonLayerAnimationBlock(anim)) { subview in
             subview.startSkeletonAnimation(anim)
         }
     }
 
-    func stopSkeletonAnimation() {
+    @objc func stopSkeletonAnimation() {
         skeletonIsAnimated = false
         subviewsSkeletonables.recursiveSearch(leafBlock: stopSkeletonLayerAnimationBlock) { subview in
             subview.stopSkeletonAnimation()
@@ -42,7 +42,7 @@ public extension UIView {
 
 extension UIView {
     
-    func showSkeleton(withType type: SkeletonType = .solid, usingColors colors: [UIColor], animated: Bool = false, animation: SkeletonLayerAnimation? = nil) {
+    @objc func showSkeleton(withType type: SkeletonType = .solid, usingColors colors: [UIColor], animated: Bool = false, animation: SkeletonLayerAnimation? = nil) {
         skeletonIsAnimated = animated
         flowDelegate = SkeletonFlowHandler()
         flowDelegate?.willBeginShowingSkeletons(withRootView: self)

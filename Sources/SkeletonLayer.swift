@@ -8,9 +8,9 @@
 
 import UIKit
 
-public typealias SkeletonLayerAnimation = (CALayer) -> CAAnimation
+@objc public typealias SkeletonLayerAnimation = (CALayer) -> CAAnimation
 
-public enum SkeletonType {
+@objc public enum SkeletonType {
     case solid
     case gradient
     
